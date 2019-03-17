@@ -49,7 +49,7 @@ export class AppRoot {
         <ion-footer>
           <ion-toolbar>
             <ion-title text-center>
-              <ion-button fill="clear" onClick={() => window.open("https://github.com/")}>
+              <ion-button fill="clear" onClick={() => window.open("https://github.com/dzziwny/shh-rsa-to-xml-converter")}>
                 <ion-icon slot="icon-only" name="logo-github" size="large" />
               </ion-button>
             </ion-title>
