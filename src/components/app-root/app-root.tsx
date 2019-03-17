@@ -1,12 +1,15 @@
-import { Component } from '@stencil/core';
+import { Component, State } from '@stencil/core';
+import * as child_process from 'child_process';
 
 @Component({
   tag: 'app-root',
   styleUrl: 'app-root.css'
 })
 export class AppRoot {
-  key: string;
+
+  @State()
   xml: string = '<RSAKeyValue>\n\t<Modulus>b\'1dsY3ah...\'</Modulus>\n\t<Exponent>b\'AQAB\'</Exponent>\n</RSAKeyValue>';
+  
   render() {
     return (
       <ion-app>
@@ -18,8 +21,9 @@ export class AppRoot {
                 color="secondary"
                 onClick={() => window.open("https://gist.github.com/hbldh/1c99de93987cad0fe0b59983132b9f3c", "_blank")}
               >
-                algorithm:
+                algorithm
               </ion-button>
+              created by
               <ion-button
                 color="primary" 
                 onClick={() => window.open("https://gist.github.com/hbldh", "_blank")}>
@@ -55,7 +59,19 @@ export class AppRoot {
     );
   }
 
-  onKeyChange(value) {
-    console.log('onKeyChange', {value});
+  onKeyChange(value: string) {
+    const process = child_process.spawn('python', [
+      '../../converter.py',
+      value
+    ]);
+
+    process.on('data', data => {
+      const xml = `${data}`.substr(`${data}`.indexOf('<'));
+      this.xml = xml;
+    });
+    
+    process.stderr.on('data', () => {
+      this.xml = 'something went wrong...';
+    });
   }
 }
