@@ -4,6 +4,6 @@ Site uses [Henrik Blidh](https://gist.github.com/hbldh) [algorithm](https://gist
 
 Created with [stenciljs](https://stenciljs.com/) framework.
 
-Used [brython](https://github.com/brython-dev/brython) package to use python code from browser.
+Used [brython](https://github.com/brython-dev/brython) package to run python code in browser.
 
 Available under [this](https://ssh-rsa-to-xml.firebaseapp.com) link.
