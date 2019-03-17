@@ -18,9 +18,6 @@
   },
   "devDependencies": {
     "@stencil/core": "0.17.0",
-    "@types/node": "^11.11.3",
-    "rollup-plugin-node-builtins": "^2.1.2",
-    "rollup-plugin-node-globals": "^1.4.0",
     "workbox-build": "3.4.1"
   }
 }

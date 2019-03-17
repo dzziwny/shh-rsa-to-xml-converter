@@ -13,8 +13,13 @@ import 'ionicons';
 
 export namespace Components {
 
-  interface AppRoot {}
-  interface AppRootAttributes extends StencilHTMLAttributes {}
+  interface AppRoot {
+    'xml': string;
+  }
+  interface AppRootAttributes extends StencilHTMLAttributes {
+    'onKeyEmiter'?: (event: CustomEvent<string>) => void;
+    'xml'?: string;
+  }
 }
 
 declare global {

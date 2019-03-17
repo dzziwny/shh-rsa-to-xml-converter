@@ -1,5 +1,4 @@
-import { Component, State } from '@stencil/core';
-import * as child_process from 'child_process';
+import { Component, Event, EventEmitter, Prop } from '@stencil/core';
 
 @Component({
   tag: 'app-root',
@@ -7,9 +6,11 @@ import * as child_process from 'child_process';
 })
 export class AppRoot {
 
-  @State()
-  xml: string = '<RSAKeyValue>\n\t<Modulus>b\'1dsY3ah...\'</Modulus>\n\t<Exponent>b\'AQAB\'</Exponent>\n</RSAKeyValue>';
-  
+  @Prop()
+  xml: string = '<RSAKeyValue>\n\t<Modulus>1dsY3ah...</Modulus>\n\t<Exponent>AQAB</Exponent>\n</RSAKeyValue>';
+
+  @Event() keyEmiter: EventEmitter<string>;
+
   render() {
     return (
       <ion-app>
@@ -43,7 +44,7 @@ export class AppRoot {
 
           <ion-item>
             <ion-label position="stacked">xml output</ion-label>
-            <ion-textarea disabled readonly value={this.xml} rows={10}/>
+            <ion-textarea disabled readonly value={this.xml} rows={20}/>
           </ion-item>
         </ion-content>
         <ion-footer>
@@ -60,18 +61,7 @@ export class AppRoot {
   }
 
   onKeyChange(value: string) {
-    const process = child_process.spawn('python', [
-      '../../converter.py',
-      value
-    ]);
-
-    process.on('data', data => {
-      const xml = `${data}`.substr(`${data}`.indexOf('<'));
-      this.xml = xml;
-    });
-    
-    process.stderr.on('data', () => {
-      this.xml = 'something went wrong...';
-    });
+    this.keyEmiter.emit(value);
   }
+
 }
