@@ -1,13 +1,21 @@
-import { Component, Event, EventEmitter, Prop } from '@stencil/core';
+import { Component, Event, EventEmitter, Prop, Watch } from '@stencil/core';
 
 @Component({
   tag: 'app-root',
   styleUrl: 'app-root.css'
 })
 export class AppRoot {
-
   @Prop()
-  xml: string = '<RSAKeyValue>\n\t<Modulus>1dsY3ah...</Modulus>\n\t<Exponent>AQAB</Exponent>\n</RSAKeyValue>';
+  xml: string =
+    '<RSAKeyValue>\n\t<Modulus>1dsY3ah...</Modulus>\n\t<Exponent>AQAB</Exponent>\n</RSAKeyValue>';
+
+  @Watch('xml')
+  validateName(newValue: string, oldValue: string) {
+    const generatedXml = newValue !== 'error!';
+    if (!generatedXml) return;
+    const copied = this.copyToClipboard(newValue);
+    if (copied) this.showSavedAlert();
+  }
 
   @Event() keyEmiter: EventEmitter<string>;
 
@@ -25,13 +33,17 @@ export class AppRoot {
             <ion-label position="floating">
               ssh-rsa AABBB3NzaC1yc2EAADDDAQABAAA...
             </ion-label>
-            <ion-input debounce={300} onIonChange={event => this.onKeyChange(event.detail.value)}/>
+            <ion-input
+              debounce={300}
+              onIonChange={event => this.onKeyChange(event.detail.value)}
+            />
           </ion-item>
 
           <ion-item>
             <ion-label position="stacked">xml output</ion-label>
-            <ion-textarea disabled readonly value={this.xml} rows={20}/>
+            <ion-textarea disabled readonly value={this.xml} rows={20} />
           </ion-item>
+          <ion-toast-controller />
         </ion-content>
         <ion-footer>
           <ion-toolbar>
@@ -71,4 +83,39 @@ export class AppRoot {
     this.keyEmiter.emit(value);
   }
 
+  copyToClipboard(text: string): boolean {
+    const el = document.createElement('textarea');
+    el.value = text;
+    el.setAttribute('readonly', '');
+    el.style.position = 'absolute';
+    el.style.left = '-9999px';
+    document.body.appendChild(el);
+    const selected =
+      document.getSelection().rangeCount > 0
+        ? document.getSelection().getRangeAt(0)
+        : false;
+    el.select();
+    const copied = document.execCommand('copy');
+    document.body.removeChild(el);
+    if (selected) {
+      document.getSelection().removeAllRanges();
+      document.getSelection().addRange(selected);
+    }
+
+    return copied;
+  }
+
+  async showSavedAlert() {
+    const toastController = document.querySelector('ion-toast-controller');
+    await toastController.componentOnReady();
+
+    const toast = await toastController.create({
+      message: 'xml copied to clipboard',
+      duration: 1000,
+      color: 'secondary',
+      position: 'middle'
+    });
+
+    return await toast.present();
+  }
 }
