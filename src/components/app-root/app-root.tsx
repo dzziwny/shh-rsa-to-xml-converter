@@ -17,20 +17,6 @@ export class AppRoot {
         <ion-header>
           <ion-toolbar color="dark">
             <ion-title>ssh-rsa - xml</ion-title>
-            <ion-buttons slot="primary">
-              <ion-button
-                color="secondary"
-                onClick={() => window.open("https://gist.github.com/hbldh/1c99de93987cad0fe0b59983132b9f3c", "_blank")}
-              >
-                algorithm
-              </ion-button>
-              created by
-              <ion-button
-                color="primary" 
-                onClick={() => window.open("https://gist.github.com/hbldh", "_blank")}>
-                Henrik Blidh
-              </ion-button>
-            </ion-buttons>
           </ion-toolbar>
         </ion-header>
 
@@ -49,11 +35,32 @@ export class AppRoot {
         </ion-content>
         <ion-footer>
           <ion-toolbar>
-            <ion-title text-center>
-              <ion-button fill="clear" onClick={() => window.open("https://github.com/dzziwny/shh-rsa-to-xml-converter")}>
-                <ion-icon slot="icon-only" name="logo-github" size="large" />
+            <ion-title>sources</ion-title>
+            <ion-buttons slot="primary">
+              <ion-button
+                color="secondary"
+                onClick={() =>
+                  window.open(
+                    'https://gist.github.com/hbldh/1c99de93987cad0fe0b59983132b9f3c',
+                    '_blank'
+                  )
+                }
+              >
+                <ion-icon slot="icon-only" name="logo-python" />
               </ion-button>
-            </ion-title>
+            </ion-buttons>
+            <ion-buttons slot="secondary">
+              <ion-button
+                color="dark"
+                onClick={() =>
+                  window.open(
+                    'https://github.com/dzziwny/shh-rsa-to-xml-converter'
+                  )
+                }
+              >
+                <ion-icon slot="icon-only" name="logo-github" />
+              </ion-button>
+            </ion-buttons>
           </ion-toolbar>
         </ion-footer>
       </ion-app>
