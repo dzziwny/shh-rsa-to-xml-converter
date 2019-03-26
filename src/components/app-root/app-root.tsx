@@ -10,7 +10,7 @@ export class AppRoot {
     '<RSAKeyValue>\n\t<Modulus>1dsY3ah...</Modulus>\n\t<Exponent>AQAB</Exponent>\n</RSAKeyValue>';
 
   @Watch('xml')
-  validateName(newValue: string, oldValue: string) {
+  validateName(newValue: string) {
     const generatedXml = newValue !== 'error!';
     if (!generatedXml) return;
     const copied = this.copyToClipboard(newValue);
