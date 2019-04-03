@@ -29,6 +29,7 @@ export class AppRoot {
         </ion-header>
 
         <ion-content padding>
+        <ion-list>
           <ion-item>
             <ion-label position="floating">
               ssh-rsa AABBB3NzaC1yc2EAADDDAQABAAA...
@@ -38,11 +39,15 @@ export class AppRoot {
               onIonChange={event => this.onKeyChange(event.detail.value)}
             />
           </ion-item>
+        </ion-list>
 
+        <ion-list>
           <ion-item>
-            <ion-label position="stacked">xml output</ion-label>
-            <ion-textarea disabled readonly value={this.xml} rows={20} />
+            <ion-label text-wrap color="medium">
+              {this.xml}
+            </ion-label>
           </ion-item>
+        </ion-list>
           <ion-toast-controller />
         </ion-content>
         <ion-footer>
