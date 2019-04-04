@@ -30,7 +30,7 @@ export class AppRoot {
 
         <ion-content padding>
         <ion-list>
-          <ion-item>
+          <ion-item id="ssh-input">
             <ion-label position="floating">
               ssh-rsa AABBB3NzaC1yc2EAADDDAQABAAA...
             </ion-label>
