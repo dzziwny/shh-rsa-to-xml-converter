@@ -11,6 +11,7 @@
     "build": "stencil build",
     "build:prod": "stencil build --prod",
     "start": "stencil build --dev --watch --serve",
+    "start:prod": "stencil build --prod --serve",
     "test": "stencil test --spec --e2e",
     "test.watch": "stencil test --spec --e2e --watch"
   },
