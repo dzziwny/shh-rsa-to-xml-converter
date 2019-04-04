@@ -1,6 +1,6 @@
 {
-  "name": "ssh",
-  "short_name": "ssh",
+  "name": "ssh-rsa-xml",
+  "short_name": "ssh-rsa-xml",
   "start_url": "/",
   "display": "standalone",
   "icons": [{
