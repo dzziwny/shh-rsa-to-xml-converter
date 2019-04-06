@@ -23,7 +23,7 @@ export class AppRoot {
     return (
       <ion-app>
         <ion-header>
-          <ion-toolbar color="dark">
+          <ion-toolbar>
             <ion-title>ssh-rsa - xml</ion-title>
           </ion-toolbar>
         </ion-header>
@@ -43,7 +43,7 @@ export class AppRoot {
 
         <ion-list>
           <ion-item>
-            <ion-label text-wrap color="medium">
+            <ion-label text-wrap color="secondary">
               {this.xml}
             </ion-label>
           </ion-item>
