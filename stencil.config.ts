@@ -8,7 +8,7 @@ export const config: Config = {
   globalStyle: 'src/global/app.css',
   copy: [
     {
-      src: 'converter.py'
+      src: 'py'
     }
   ]
 };
