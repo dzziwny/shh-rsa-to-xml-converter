@@ -23,19 +23,17 @@ export class AppRoot {
     return (
       <ion-app>
         <ion-header>
-          <ion-toolbar>
+          <ion-toolbar class="header-toolbar">
             <ion-title>ssh-rsa - xml</ion-title>
           </ion-toolbar>
         </ion-header>
 
-        <ion-content padding>
-        <ion-list>
+        <ion-content>
+        <ion-list class="ssh-rsa-list">
           <ion-item id="ssh-input">
-            <ion-label position="floating">
-              ssh-rsa AABBB3NzaC1yc2EAADDDAQABAAA...
-            </ion-label>
             <ion-input
               debounce={300}
+              placeholder='ssh-rsa AABBB3NzaC1yc2EAADDDA...'
               onIonChange={event => this.onKeyChange(event.detail.value)}
             />
           </ion-item>
@@ -43,7 +41,7 @@ export class AppRoot {
 
         <ion-list>
           <ion-item>
-            <ion-label text-wrap color="secondary">
+            <ion-label text-wrap color="secondary" class="xml-output">
               {this.xml}
             </ion-label>
           </ion-item>
@@ -51,7 +49,7 @@ export class AppRoot {
           <ion-toast-controller />
         </ion-content>
         <ion-footer>
-          <ion-toolbar>
+          <ion-toolbar class="footer-toolbar">
             <ion-title>sources</ion-title>
             <ion-buttons slot="primary">
               <ion-button

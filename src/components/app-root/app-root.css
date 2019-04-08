@@ -1,4 +1,50 @@
+ion-content {
+    --padding-bottom: 13px;
+    --padding-end: 13px;
+    --padding-start: 13px;
+    --padding-top: 8.5px;
+}
+
+ion-title {
+    font-size: 18px !important;
+}
+
+.ssh-rsa-list {
+    padding-top: 0px;
+    padding-bottom: 0px;
+    margin-bottom: 13px;
+}
+
+.ssh-rsa-label {
+    font-size: 13px !important;
+}
+
 #ssh-input {
     --highlight-background: var(--ion-color-secondary, #0cd1e8);
-
+    font-size: 13px;
 }
+
+.xml-output {
+    font-size: 13px !important;
+}
+
+ion-item {
+    --padding-start: 0px;
+}
+
+ion-toolbar {
+    --padding-bottom: 0px;
+    --padding-end: 0px;
+    --padding-start: 0px;
+    --padding-top: 0px;
+}
+
+.header-toolbar {
+    --min-height: 55px;
+}
+
+.footer-toolbar {
+    --min-height: 55px;
+}
+
+
