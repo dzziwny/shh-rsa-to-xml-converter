@@ -6,9 +6,4 @@ export const config: Config = {
   outputTargets: [{ type: 'www' }],
   globalScript: 'src/global/app.ts',
   globalStyle: 'src/global/app.css',
-  copy: [
-    {
-      src: 'py'
-    }
-  ]
 };
