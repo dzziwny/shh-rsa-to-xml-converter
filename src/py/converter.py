@@ -1,5 +1,5 @@
-base64 = __import__('base64')
-struct = __import__('struct')
+import base64
+import struct
 from browser import document
 
 app = document['approot']
