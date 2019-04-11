@@ -14,9 +14,11 @@ import 'ionicons';
 export namespace Components {
 
   interface AppRoot {
+    'isScriptLoaded': boolean;
     'xml': string;
   }
   interface AppRootAttributes extends StencilHTMLAttributes {
+    'isScriptLoaded'?: boolean;
     'onKeyEmiter'?: (event: CustomEvent<string>) => void;
     'xml'?: string;
   }

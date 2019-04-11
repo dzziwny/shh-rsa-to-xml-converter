@@ -9,9 +9,12 @@ export class AppRoot {
   xml: string =
     '<RSAKeyValue>\n\t<Modulus>1dsY3ah...</Modulus>\n\t<Exponent>AQAB</Exponent>\n</RSAKeyValue>';
 
+  @Prop()
+  isScriptLoaded: boolean = false;
+
   @Watch('xml')
   validateName(newValue: string) {
-    const generatedXml = newValue !== 'error!';
+    const generatedXml = newValue !== 'invalid key!';
     if (!generatedXml) return;
     const copied = this.copyToClipboard(newValue);
     if (copied) this.showSavedAlert();
@@ -20,6 +23,21 @@ export class AppRoot {
   @Event() keyEmiter: EventEmitter<string>;
 
   render() {
+    let xmlContent = (
+      <ion-label text-wrap color="secondary" class="xml-output">
+        {this.xml}
+      </ion-label>
+    );
+
+    if (!this.isScriptLoaded) {
+      xmlContent = [
+      <ion-spinner></ion-spinner>,
+      <ion-label text-wrap color="secondary" class="xml-output">
+        loading script...
+      </ion-label>
+      ]
+    }
+
     return (
       <ion-app>
         <ion-header>
@@ -41,9 +59,7 @@ export class AppRoot {
 
         <ion-list>
           <ion-item>
-            <ion-label text-wrap color="secondary" class="xml-output">
-              {this.xml}
-            </ion-label>
+            {xmlContent}
           </ion-item>
         </ion-list>
           <ion-toast-controller />
@@ -121,4 +137,25 @@ export class AppRoot {
 
     return await toast.present();
   }
+
+  componentWillLoad() {
+    console.log("componentWillLoad")
+  }
+
+  componentWillUpdate() {
+    console.log("componentWillUpdate")
+  }
+
+  componentDidLoad() {
+    console.log("componentDidLoad")
+  }
+
+  componentDidUpdate() {
+    console.log("componentDidUpdate")
+  }
+
+  componentDidUnload() {
+    console.log("componentDidUnload")
+  }
+
 }

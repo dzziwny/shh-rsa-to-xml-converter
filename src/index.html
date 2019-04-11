@@ -66,9 +66,10 @@ def convert_openssh_key_to_xml(event):
 
       app.xml = xml
     except:
-      app.xml = 'error!'
+      app.xml = 'invalid key!'
 
 app.bind('keyEmiter', convert_openssh_key_to_xml);
+app.isScriptLoaded = True;
       </script>
 </body>
 
