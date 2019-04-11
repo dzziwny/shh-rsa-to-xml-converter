@@ -138,24 +138,4 @@ export class AppRoot {
     return await toast.present();
   }
 
-  componentWillLoad() {
-    console.log("componentWillLoad")
-  }
-
-  componentWillUpdate() {
-    console.log("componentWillUpdate")
-  }
-
-  componentDidLoad() {
-    console.log("componentDidLoad")
-  }
-
-  componentDidUpdate() {
-    console.log("componentDidUpdate")
-  }
-
-  componentDidUnload() {
-    console.log("componentDidUnload")
-  }
-
 }
