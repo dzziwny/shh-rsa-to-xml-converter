@@ -13,14 +13,13 @@
     "start": "stencil build --dev --watch --serve",
     "start:prod": "stencil build --prod --serve",
     "test": "stencil test --spec --e2e",
-    "test.watch": "stencil test --spec --e2e --watch"
-  },
-  "dependencies": {
-    "@ionic/core": "4.0.0"
+    "test.watch": "stencil test --spec --e2e --watch",
+    "deploy": "firebase deploy"
   },
   "devDependencies": {
-    "@stencil/core": "0.17.0",
-    "firebase-tools": "^6.5.0",
-    "workbox-build": "3.4.1"
+    "@ionic/core": "^5.0.0",
+    "@stencil/core": "^1.8.8",
+    "firebase-tools": "^7.15.1",
+    "workbox-build": "4.3.1"
   }
 }

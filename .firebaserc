@@ -1,1 +1,5 @@
-{}
+{
+  "projects": {
+    "ssh": "ssh-rsa-to-xml"
+  }
+}

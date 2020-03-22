@@ -1,4 +1,4 @@
-import { Component, Event, EventEmitter, Prop, Watch } from '@stencil/core';
+import { Component, h, Event, EventEmitter, Prop, Watch } from '@stencil/core';
 
 @Component({
   tag: 'app-root',
@@ -124,18 +124,15 @@ export class AppRoot {
     return copied;
   }
 
-  async showSavedAlert() {
-    const toastController = document.querySelector('ion-toast-controller');
-    await toastController.componentOnReady();
+  showSavedAlert() {
+    const toast = document.createElement('ion-toast');
+    toast.message = 'xml copied to clipboard';
+    toast.duration = 1000;
+    toast.color = 'secondary';
+    toast.position = 'middle';
 
-    const toast = await toastController.create({
-      message: 'xml copied to clipboard',
-      duration: 1000,
-      color: 'secondary',
-      position: 'middle'
-    });
-
-    return await toast.present();
+    document.body.appendChild(toast);
+    return toast.present();
   }
 
 }
